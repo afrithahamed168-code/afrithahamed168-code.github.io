@@ -204,3 +204,24 @@ table.simple th { font-size: .8rem; text-transform: uppercase; letter-spacing: .
 .hc-foot { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); font-size: .85rem; color: var(--muted); }
 .hc-foot b { color: var(--accent); font-weight: 600; }
 @media (max-width: 420px) { .hero-chart { padding: 20px 16px 16px; } .hc-row { grid-template-columns: 92px 1fr 46px; } }
+
+/* ----- v3: code thumbnail, at-a-glance, calmer tags, mobile nav ----- */
+.code-thumb { aspect-ratio: 16/10; background: #16181d; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; overflow: hidden; }
+.ct-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #23262d; }
+.ct-bar i { width: 10px; height: 10px; border-radius: 50%; background: #4a4f5a; display: block; }
+.ct-bar span { margin-left: 8px; font-size: .75rem; color: #9aa0ad; font-family: ui-monospace, Menlo, Consolas, monospace; }
+.code-thumb pre { margin: auto 0; padding: 18px 24px; color: #d7dae0; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .9rem; line-height: 1.8; white-space: pre; overflow: hidden; }
+.code-thumb b { color: #7fd8c9; font-weight: 600; }
+.ct-dir { color: #ffffff; font-weight: 600; }
+.ct-c { color: #7c8290; }
+@media (max-width: 420px) { .code-thumb pre { font-size: .74rem; padding: 14px; } }
+
+.glance { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.glance div { padding: 18px 22px; border-left: 1px solid var(--line); font-size: .95rem; line-height: 1.5; }
+.glance div:first-child { border-left: none; }
+.glance span { display: block; font-size: .74rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+@media (max-width: 760px) { .glance { grid-template-columns: 1fr; } .glance div { border-left: none; border-top: 1px solid var(--line); } .glance div:first-child { border-top: none; } }
+
+.skill-box .tags li { background: #f1efea; color: var(--ink); }
+
+@media (max-width: 640px) { .nav ul { gap: 18px; } .nav ul a { font-size: .9rem; } }

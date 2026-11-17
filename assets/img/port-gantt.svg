@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Inter, system-ui, sans-serif">
+<rect width="800" height="500" fill="#ffffff"/>
+<text x="70" y="34" font-size="20" font-weight="600" fill="#16181d">Berth schedule, first 3 weeks</text>
+<text x="70" y="56" font-size="14" fill="#5b6170">Each block is one ship being handled (first-come-first-served baseline)</text>
+<line x1="70.0" y1="70" x2="70.0" y2="430" stroke="#e6e3dc" stroke-width="1"/>
+<text x="70.0" y="454" font-size="13" fill="#5b6170" text-anchor="middle">Day 0</text>
+<line x1="303.3" y1="70" x2="303.3" y2="430" stroke="#e6e3dc" stroke-width="1"/>
+<text x="303.3" y="454" font-size="13" fill="#5b6170" text-anchor="middle">Day 7</text>
+<line x1="536.7" y1="70" x2="536.7" y2="430" stroke="#e6e3dc" stroke-width="1"/>
+<text x="536.7" y="454" font-size="13" fill="#5b6170" text-anchor="middle">Day 14</text>
+<line x1="770.0" y1="70" x2="770.0" y2="430" stroke="#e6e3dc" stroke-width="1"/>
+<text x="770.0" y="454" font-size="13" fill="#5b6170" text-anchor="middle">Day 21</text>
+<text x="56" y="120.0" font-size="15" font-weight="600" fill="#5b6170" text-anchor="end">B1</text>
+<rect x="71.0" y="78.0" width="31.9" height="74.0" rx="4" fill="#00897b"/>
+<rect x="126.2" y="78.0" width="117.0" height="74.0" rx="4" fill="#00897b"/>
+<rect x="266.8" y="78.0" width="183.3" height="74.0" rx="4" fill="#00897b"/>
+<rect x="464.8" y="78.0" width="126.2" height="74.0" rx="4" fill="#00897b"/>
+<rect x="593.0" y="78.0" width="70.2" height="74.0" rx="4" fill="#00897b"/>
+<rect x="688.7" y="78.0" width="74.3" height="74.0" rx="4" fill="#00897b"/>
+<rect x="765.0" y="78.0" width="4.0" height="74.0" rx="4" fill="#00897b"/>
+<text x="56" y="210.0" font-size="15" font-weight="600" fill="#5b6170" text-anchor="end">B2</text>
+<rect x="97.0" y="168.0" width="119.2" height="74.0" rx="4" fill="#00897b"/>
+<rect x="218.2" y="168.0" width="105.2" height="74.0" rx="4" fill="#00897b"/>
+<rect x="352.2" y="168.0" width="64.9" height="74.0" rx="4" fill="#00897b"/>
+<rect x="419.2" y="168.0" width="77.6" height="74.0" rx="4" fill="#00897b"/>
+<rect x="498.8" y="168.0" width="124.8" height="74.0" rx="4" fill="#00897b"/>
+<rect x="625.6" y="168.0" width="143.4" height="74.0" rx="4" fill="#00897b"/>
+<text x="56" y="300.0" font-size="15" font-weight="600" fill="#5b6170" text-anchor="end">B3</text>
+<rect x="183.5" y="258.0" width="50.3" height="74.0" rx="4" fill="#00897b"/>
+<rect x="237.7" y="258.0" width="72.5" height="74.0" rx="4" fill="#00897b"/>
+<rect x="324.1" y="258.0" width="73.1" height="74.0" rx="4" fill="#00897b"/>
+<rect x="407.5" y="258.0" width="42.6" height="74.0" rx="4" fill="#00897b"/>
+<rect x="518.9" y="258.0" width="49.1" height="74.0" rx="4" fill="#00897b"/>
+<rect x="570.1" y="258.0" width="68.6" height="74.0" rx="4" fill="#00897b"/>
+<rect x="659.5" y="258.0" width="66.6" height="74.0" rx="4" fill="#00897b"/>
+<rect x="746.0" y="258.0" width="23.0" height="74.0" rx="4" fill="#00897b"/>
+<text x="56" y="390.0" font-size="15" font-weight="600" fill="#5b6170" text-anchor="end">B4</text>
+<rect x="211.6" y="348.0" width="84.1" height="74.0" rx="4" fill="#00897b"/>
+<rect x="297.7" y="348.0" width="100.1" height="74.0" rx="4" fill="#00897b"/>
+<rect x="437.3" y="348.0" width="166.0" height="74.0" rx="4" fill="#00897b"/>
+<rect x="633.5" y="348.0" width="116.6" height="74.0" rx="4" fill="#00897b"/>
+<line x1="70" y1="70" x2="70" y2="430" stroke="#c9c5bc" stroke-width="1"/>
+</svg>
