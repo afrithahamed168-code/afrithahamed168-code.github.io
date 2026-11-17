@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css?v=3">
+  <link rel="stylesheet" href="../css/style.css?v=4">
 </head>
 <body>
 
@@ -89,16 +89,63 @@
       <div class="stat"><b>27.2 h</b><span>95th-percentile wait (the bad tail)</span></div>
       <div class="stat"><b>35.8</b><span>ships handled per month</span></div>
     </div>
-    <p>The average looks comfortable, but the tail tells a different story, and it isn't spread evenly. The largest ships can only use the two biggest berths, which are busy over 90% of the year, so they queue far longer than small ships, which can use any berth:</p>
-    <table class="simple">
-      <thead><tr><th>Ship size</th><th>Berths it can use</th><th>Avg. wait</th><th>95th-pct wait</th></tr></thead>
-      <tbody>
-        <tr><td>Handysize (smallest)</td><td>All 4</td><td>1.2 h</td><td>6.8 h</td></tr>
-        <tr><td>Handymax</td><td>All 4</td><td>7.1 h</td><td>21.2 h</td></tr>
-        <tr><td>Supramax / Ultramax</td><td>3</td><td>7.0 h</td><td>26.6 h</td></tr>
-        <tr><td>Panamax / Kamsarmax (largest)</td><td>2</td><td>11.6 h</td><td>43.2 h</td></tr>
-      </tbody>
-    </table>
+
+    <figure class="chart-fig">
+      <img src="../assets/img/port-gantt.svg" alt="Gantt-style chart of the first three weeks: each block is one ship being handled at berths B1 to B4. B1 and B2 are almost never idle; B4 has long gaps." loading="lazy">
+      <figcaption>The baseline's output for the first three weeks of the year. Berths B1 and B2 are almost never idle, while the smallest berth, B4, has long gaps.</figcaption>
+    </figure>
+
+    <p>The average looks comfortable, but the tail tells a different story, and it isn't spread evenly. The two largest berths are the only ones that can take the biggest ships, and they're busy almost all year:</p>
+
+    <figure class="chart-fig" aria-label="Bar chart: share of the year each berth is busy handling ships">
+      <div class="hc-title">How busy each berth is</div>
+      <div class="hc-sub">Share of the simulated year spent handling ships</div>
+      <div class="hc-row util" title="B1: busy 95% of the year · takes ships up to Panamax/Kamsarmax · 124 ships">
+        <span class="hc-label">B1<small>up to Panamax</small></span><span class="hc-track full"><span class="hc-bar" style="width:95.3%"></span></span><span class="hc-val">95%</span>
+      </div>
+      <div class="hc-row util" title="B2: busy 93% of the year · takes ships up to Panamax/Kamsarmax · 109 ships">
+        <span class="hc-label">B2<small>up to Panamax</small></span><span class="hc-track full"><span class="hc-bar" style="width:92.6%"></span></span><span class="hc-val">93%</span>
+      </div>
+      <div class="hc-row util" title="B3: busy 88% of the year · takes ships up to Supramax/Ultramax · 112 ships">
+        <span class="hc-label">B3<small>up to Supramax</small></span><span class="hc-track full"><span class="hc-bar" style="width:87.7%"></span></span><span class="hc-val">88%</span>
+      </div>
+      <div class="hc-row util" title="B4: busy 64% of the year · takes ships up to Handymax · 87 ships">
+        <span class="hc-label">B4<small>up to Handymax</small></span><span class="hc-track full"><span class="hc-bar" style="width:64.0%"></span></span><span class="hc-val">64%</span>
+      </div>
+    </figure>
+
+    <p>So the bigger the ship, the fewer berths it can use, and the longer it can be stuck waiting:</p>
+
+    <figure class="chart-fig" aria-label="Bullet chart: worst-case and average waiting time by ship size">
+      <div class="hc-title">Waiting time by ship size</div>
+      <div class="hc-sub">Hours from arrival to berthing · 108 ships in each size class</div>
+      <div class="hc-legend"><span><i class="lg-bar"></i>Worst case (95th percentile)</span><span><i class="lg-avg"></i>Average</span></div>
+      <div class="hc-row wide" title="Handysize: worst case 8.4 h, average 1.2 h · can use all 4 berths">
+        <span class="hc-label">Handysize<small>4 berths</small></span><span class="hc-track"><span class="hc-bar" style="width:19.3%"></span><span class="hc-avg" style="left:2.8%"></span></span><span class="hc-val">8.4 h<small>avg 1.2</small></span>
+      </div>
+      <div class="hc-row wide" title="Handymax: worst case 22.2 h, average 7.1 h · can use all 4 berths">
+        <span class="hc-label">Handymax<small>4 berths</small></span><span class="hc-track"><span class="hc-bar" style="width:51.0%"></span><span class="hc-avg" style="left:16.3%"></span></span><span class="hc-val">22.2 h<small>avg 7.1</small></span>
+      </div>
+      <div class="hc-row wide" title="Supramax / Ultramax: worst case 27.3 h, average 7.0 h · can use 3 berths">
+        <span class="hc-label">Supramax<small>3 berths</small></span><span class="hc-track"><span class="hc-bar" style="width:62.8%"></span><span class="hc-avg" style="left:16.1%"></span></span><span class="hc-val">27.3 h<small>avg 7.0</small></span>
+      </div>
+      <div class="hc-row wide" title="Panamax / Kamsarmax: worst case 43.5 h, average 11.6 h · can use only 2 berths">
+        <span class="hc-label">Panamax<small>2 berths</small></span><span class="hc-track"><span class="hc-bar" style="width:100%"></span><span class="hc-avg" style="left:26.7%"></span></span><span class="hc-val">43.5 h<small>avg 11.6</small></span>
+      </div>
+      <details class="hc-table">
+        <summary>See the numbers as a table</summary>
+        <table class="simple">
+          <thead><tr><th>Ship size</th><th>Berths it can use</th><th>Avg. wait</th><th>95th-pct wait</th></tr></thead>
+          <tbody>
+            <tr><td>Handysize (smallest)</td><td>All 4</td><td>1.2 h</td><td>8.4 h</td></tr>
+            <tr><td>Handymax</td><td>All 4</td><td>7.1 h</td><td>22.2 h</td></tr>
+            <tr><td>Supramax / Ultramax</td><td>3</td><td>7.0 h</td><td>27.3 h</td></tr>
+            <tr><td>Panamax / Kamsarmax (largest)</td><td>2</td><td>11.6 h</td><td>43.5 h</td></tr>
+          </tbody>
+        </table>
+      </details>
+    </figure>
+
     <p>This is the core tension the project explores. The two large berths are close to saturated even on a normal day, so a storm or an outage there should hit the biggest ships hardest. A rule that prioritises by size or deadline could help or hurt, depending on the scenario.</p>
   </div>
 </section>
