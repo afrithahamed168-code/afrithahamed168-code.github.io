@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Sales Trend Analysis | Afrith Ahamed</title>
+  <meta name="description" content="Case study: Power BI dashboards and sales forecasting to help a fashion retailer restock the right sizes at the right time.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Afrith Ahamed</a>
+    <ul>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="case-hero">
+  <div class="wrap">
+    <a class="back" href="../index.html#projects">← All projects</a>
+    <span class="eyebrow">Case study · Data &amp; business analytics</span>
+    <h1>Inventory sales trend analysis</h1>
+    <p class="lead">Dashboards and forecasts that help a multi-brand fashion retailer see what's selling, in which sizes, and when to restock it, before popular items run out.</p>
+    <div class="facts">
+      <div><span>My role</span>Data Visualisation &amp; Analytics Lead</div>
+      <div><span>Module</span>SUTD 40.011 Data &amp; Business Analytics</div>
+      <div><span>Timeline</span>Jan – Apr 2025 · team of 5</div>
+      <div><span>Built with</span>Power BI (my focus), plus Python, R and Excel</div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="cover"><img src="../assets/img/dba-poster.jpg" alt="Project poster showing the general, clothing and footwear sales dashboards" style="object-fit:contain;max-height:none;background:#fff;border:1px solid var(--line);border-radius:var(--radius)"></div>
+</div>
+
+<section>
+  <div class="wrap prose">
+    <span class="eyebrow">The problem</span>
+    <h2>Popular sizes sell out, unpopular ones sit on the shelf</h2>
+    <p>Our client, House of 28, is a Singapore fashion retailer that stocks designers and brands from across Asia through several physical stores, pop-ups and e-commerce. They had two connected problems: common sizes sold out quickly while unpopular sizes stayed unsold, and slow replenishment meant they missed sales during the season.</p>
+    <p>Our objective was to show them which sizes, styles and brands to stock up on, and to forecast a replenishment schedule so restocking happens before items run out rather than after.</p>
+
+    <span class="eyebrow">How we approached it</span>
+    <h2>Clean first, then visualise, then refine</h2>
+    <ul>
+      <li><b>Cleaning the data.</b> We worked with the client to understand what each field in the sales data meant, removed invalid and duplicate entries, and categorised every item by type (clothing, footwear, beauty and so on).</li>
+      <li><b>Finding relationships.</b> We looked for sales patterns by size and product type, and built forecasts to predict future demand for inventory sizing.</li>
+      <li><b>Designing the dashboards.</b> We turned the insights into Power BI dashboards a store manager could use without training, keeping only the visuals that support a real business decision.</li>
+      <li><b>Refining.</b> We iterated on the layout and visuals based on feedback until the main questions could be answered in a couple of clicks.</li>
+    </ul>
+
+    <span class="eyebrow">What we built</span>
+    <h2>Three dashboards and a forecast</h2>
+    <ul>
+      <li><b>General Sales Dashboard.</b> One-glance overview of sales by store, quarter, brand and item type, with filters for date, brand and item category.</li>
+      <li><b>Clothing Sales Dashboard.</b> Sales by size over time, the top five sizes each year, and a sales-velocity table showing how fast each item type sells and when it needs replenishing.</li>
+      <li><b>Footwear Sales Dashboard.</b> Quarterly footwear sales, sales by size and shoe type, plus the same velocity and replenishment view.</li>
+      <li><b>Sales forecast.</b> A model trained on historical sales and checked against a held-out test period, projecting future sales with an 80% confidence interval. A feature-importance chart shows which factors drive footwear demand most.</li>
+    </ul>
+
+    <div class="callout">
+      <p><b>Designed around two questions.</b> "What's selling best?" Open the general dashboard, pick a period and hover over the trend. "What's running low?" Check sales velocity, find the item, and order the quantity shown under "Replenish in".</p>
+    </div>
+
+    <span class="eyebrow">What we found</span>
+    <h2>Key takeaways for the client</h2>
+    <table class="simple">
+      <thead><tr><th>Question</th><th>Answer from the data</th></tr></thead>
+      <tbody>
+        <tr><td>Best-selling clothing size</td><td>S</td></tr>
+        <tr><td>Best-selling item type</td><td>Tops</td></tr>
+        <tr><td>Best-selling footwear</td><td>Heels</td></tr>
+        <tr><td>Top store</td><td>Ngee Ann City</td></tr>
+        <tr><td>Top brand</td><td>Mardi Mercredi</td></tr>
+      </tbody>
+    </table>
+    <p>With the replenishment rate driven by sales velocity, the client can track how quickly each item is depleting, forecast when to reorder, and reduce dead stock in slow-moving sizes.</p>
+
+    <h3>Limitations we flagged</h3>
+    <p>The dataset had quantities but no prices, so high sales volume doesn't necessarily mean high revenue. We also assumed restocking should scale with quantity sold, and that the data provided was complete and accurate. Both assumptions would be worth testing with the client before acting on the forecasts.</p>
+
+    <h3>My role</h3>
+    <p>As the team's Data Visualisation &amp; Analytics Lead, I was in charge of the dashboards. I built the General, Clothing and Footwear Sales Dashboards in Power BI: choosing which visuals answered the client's questions, setting up the date, brand, category and size filters so managers could drill down themselves, and laying each page out so the key numbers were visible at a glance. I then refined the layout over several rounds of feedback until the "what's selling" and "what's running low" questions could each be answered in a couple of clicks.</p>
+
+    <p style="margin-top:28px;color:var(--muted);font-size:.92rem">Team #23: Lin Lizhao, Wong Jie Yi, Afrith Ahamed, Saarthak Khanduja, Zeng Xiangqi. SUTD 40.011 Data and Business Analytics.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap next">
+    <a class="btn" href="alightcard.html">← Previous: aLightCard</a>
+    <a class="btn primary" href="port-scheduling-simulator.html">Next: Port scheduling simulator →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Afrith Ahamed</div>
+</footer>
+
+</body>
+</html>

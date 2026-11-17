@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Afrith Ahamed | Engineering Systems & Design, SUTD</title>
+  <meta name="description" content="Portfolio of Afrith Ahamed, Engineering Systems and Design student at SUTD: data analytics, simulation and hardware prototyping projects.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Afrith Ahamed</a>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li class="hide-sm"><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Engineering Systems &amp; Design · SUTD</span>
+      <h1>I turn messy data and fuzzy problems into things people can act on.</h1>
+      <p class="lead">I'm Afrith, a systems engineering student who builds dashboards, simulation models and working prototypes, and who's happiest when raw, inconsistent data finally becomes reliable enough to make decisions with.</p>
+      <div class="meta">
+        <span>Singapore</span>
+        <span>Graduating April 2027</span>
+        <span>Data · Operations · Supply chain</span>
+      </div>
+      <div class="btns">
+        <a class="btn primary" href="#projects">See my work</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="assets/img/alight-grid.jpg" alt="aLightCard prototype: a transparent display mounted above a frosted acrylic card housing">
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap narrow">
+    <span class="eyebrow">About</span>
+    <h2>Engineer by training, analyst by instinct</h2>
+    <p>I started out in electrical and electronic engineering at Singapore Polytechnic, then served my National Service as a police officer at the Airport Police Division, where I was promoted to Sergeant. Now at SUTD, I study how complex systems behave and how to make them run better, through optimisation, simulation, statistics and supply chain design.</p>
+    <p>During my internship at Sembcorp, I found that the part of the job I enjoyed most was cleaning and structuring data, because good dashboards and automations only work when the data underneath them is solid. That's the thread running through the projects below.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <span class="eyebrow">Selected projects</span>
+    <h2>Things I've built</h2>
+
+    <div class="grid">
+      <a class="card" href="projects/alightcard.html">
+        <img src="assets/img/alight-arduino.jpg" alt="aLightCard prototype showing a glowing 'move to the back' message on its transparent display" loading="lazy">
+        <div class="body">
+          <div class="when">Jan – Apr 2024 · Design Thinking &amp; Innovation · Head of Technology</div>
+          <h3>aLightCard: a transparent smart transit card</h3>
+          <ul class="tags"><li>C++</li><li>ESP32</li><li>Gyroscope</li><li>User research</li><li>Math modelling</li><li>LCA</li></ul>
+          <p>A bus card with a see-through display whose AR arrow nudges commuters toward empty seats at the back of the bus. I built the firmware that keeps the arrow pointing the right way using live gyroscope input.</p>
+          <span class="more">Read the case study →</span>
+        </div>
+      </a>
+
+      <a class="card" href="projects/inventory-analytics.html">
+        <img src="assets/img/dba-poster.jpg" alt="Inventory Sales Trend Analysis project poster showing Power BI dashboards" loading="lazy">
+        <div class="body">
+          <div class="when">Jan – Apr 2025 · Data &amp; Business Analytics · Data Viz &amp; Analytics Lead</div>
+          <h3>Inventory sales trend analysis for a fashion retailer</h3>
+          <ul class="tags"><li>Power BI</li><li>Python</li><li>R</li><li>Excel</li><li>Forecasting</li></ul>
+          <p>I built the interactive Power BI dashboards that show a multi-brand retailer which sizes, styles and brands sell fastest, and when to restock them before they run out.</p>
+          <span class="more">Read the case study →</span>
+        </div>
+      </a>
+
+      <a class="card plain" href="projects/port-scheduling-simulator.html">
+        <div class="body">
+          <div class="when">Sep 2026 – present · Supply Chain Digitalisation &amp; Design · Client: Cargill</div>
+          <h3>Port berth scheduling simulator <span class="badge">In progress</span></h3>
+          <ul class="tags"><li>Python</li><li>SimPy</li><li>Excel</li><li>Discrete-event simulation</li><li>Scheduling</li></ul>
+          <p>A simulator that stress-tests how berth scheduling rules hold up under storms, congestion and berth outages, built on a year of dry-bulk arrivals supplied by Cargill. I built and cross-validated the first-come-first-served baseline in both Excel and SimPy.</p>
+          <span class="more">Read the case study →</span>
+        </div>
+      </a>
+
+      <div class="card plain">
+        <div class="body">
+          <div class="when">Personal project</div>
+          <h3>Daily activity tracker desktop app</h3>
+          <ul class="tags"><li>Python</li><li>tkinter</li><li>Software design</li></ul>
+          <p>A desktop app for planning and logging my day. It supports recurring activities, a date picker, day-by-day navigation and a manager for reusable templates. I refactored it from one large script into a clean four-module structure (UI, dialogs, data, entry point) to keep it maintainable.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <span class="eyebrow">Experience</span>
+    <h2>Where I've worked</h2>
+    <div class="timeline">
+      <div class="job">
+        <div class="date">Sep – Dec 2025</div>
+        <div>
+          <h3>Procurement Data Analyst Intern</h3>
+          <div class="org">Sembcorp Urban (Sembcorp Industries)</div>
+          <ul>
+            <li>Developed Power BI dashboards and added refresh timestamps, variance tracking and clearer visuals to support procurement decisions.</li>
+            <li>Automated procurement workflows with Excel VBA and Power Automate (bidder consolidation, document labelling, expiry alerts), cutting manual effort and errors.</li>
+            <li>Standardised SharePoint Excel data with validation and protected structures, making downstream BI refreshes and automations more reliable.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
+        <div class="date">May 2021 – May 2023</div>
+        <div>
+          <h3>NS Police Officer (Sergeant)</h3>
+          <div class="org">Airport Police Division, Singapore Police Force</div>
+          <ul>
+            <li>Promoted to Sergeant for leadership, responsibility and operational reliability.</li>
+            <li>Received the Commander's Award for Operational Excellence (Aug 2022).</li>
+            <li>Rated "Very Good" for professionalism, communication and conduct.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
+        <div class="date">Mar – Aug 2020</div>
+        <div>
+          <h3>IT Intern</h3>
+          <div class="org">Rohde &amp; Schwarz Asia</div>
+          <ul>
+            <li>Managed software licences and IT inventory, keeping them compliant and improving device tracking.</li>
+            <li>Coordinated international device logistics and streamlined shipping documentation.</li>
+            <li>Supported ticket resolution and hardware testing for internal users.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <span class="eyebrow">Toolkit</span>
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill-box">
+        <h3>Data &amp; analytics</h3>
+        <ul class="tags"><li>Python</li><li>SQL</li><li>R</li><li>Power BI</li><li>Excel (VBA, pivots)</li><li>Power Automate</li><li>SharePoint</li></ul>
+      </div>
+      <div class="skill-box">
+        <h3>Modelling &amp; operations</h3>
+        <ul class="tags"><li>Discrete-event simulation</li><li>SimPy</li><li>JaamSim</li><li>Optimisation</li><li>Probability &amp; statistics</li><li>Game theory</li><li>Supply chain</li></ul>
+      </div>
+      <div class="skill-box">
+        <h3>Engineering &amp; software</h3>
+        <ul class="tags"><li>C++</li><li>Java</li><li>ESP32 / Arduino</li><li>Android Studio</li><li>Firebase</li><li>Cisco Packet Tracer</li></ul>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div class="skill-box">
+        <h3>Singapore University of Technology and Design</h3>
+        <p>B.Eng. Engineering Systems and Design · Sep 2023 – Apr 2027 (expected)</p>
+        <p style="margin-top:10px">Relevant modules: Simulation Modeling &amp; Analysis, Optimization, Data &amp; Business Analytics, The Analytics Edge, Probability &amp; Statistics, Supply Chain Management, Manufacturing &amp; Service Operations, Game Theory</p>
+      </div>
+      <div class="skill-box">
+        <h3>Singapore Polytechnic</h3>
+        <p>Diploma in Electrical &amp; Electronic Engineering · 2018 – 2021 · cGPA 3.62</p>
+        <p style="margin-top:10px">Also: FACT Programme, Designing Energy Systems (Ratchaburi, Thailand, Jan 2025), prototyping renewable energy solutions with Thai university students.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <span class="eyebrow">Contact</span>
+    <h2>Let's talk</h2>
+    <p class="lead">I'm looking for graduate roles starting in 2027. If you think I'd be a good fit for your team, I'd love to hear from you.</p>
+    <div class="btns">
+      <a class="btn primary" href="mailto:afrithahamed168@gmail.com">Email me</a>
+      <a class="btn" href="https://www.linkedin.com/in/afrith-ahamed/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/afrithahamed168-code" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Afrith Ahamed</div>
+</footer>
+
+</body>
+</html>

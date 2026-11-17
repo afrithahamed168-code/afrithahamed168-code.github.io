@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aLightCard | Afrith Ahamed</title>
+  <meta name="description" content="Case study: aLightCard, a transparent smart transit card prototype that uses an AR arrow to balance passenger crowding on buses.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Afrith Ahamed</a>
+    <ul>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="case-hero">
+  <div class="wrap">
+    <a class="back" href="../index.html#projects">← All projects</a>
+    <span class="eyebrow">Case study · Design Thinking &amp; Innovation</span>
+    <h1>aLightCard</h1>
+    <p class="lead">A transit card with a transparent display that points commuters toward empty space at the back of the bus, and rewards them with a cheaper fare for moving there.</p>
+    <div class="facts">
+      <div><span>My role</span>Head of Technology</div>
+      <div><span>Module</span>SUTD 03.007 Design Thinking &amp; Innovation</div>
+      <div><span>Timeline</span>Jan – Apr 2024 · team of 5</div>
+      <div><span>Built with</span>C++, ESP32, gyroscope, Excel</div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="cover"><img src="../assets/img/alight-gridcard.jpg" alt="Final aLightCard prototype on a wire grid"></div>
+</div>
+
+<section>
+  <div class="wrap prose">
+    <span class="eyebrow">The module</span>
+    <h2>A full design thinking cycle, from field observation to working prototype</h2>
+    <p>aLightCard was our project for <b>Design Thinking and Innovation</b>, SUTD's core design module, where teams take a real-world problem through the whole design thinking process in one term. We followed it end to end:</p>
+    <ul>
+      <li><b>Empathise.</b> We rode public buses at peak hours, photographed and mapped how passengers boarded, moved and alighted, and built user journey maps for different commuter personas.</li>
+      <li><b>Define.</b> We narrowed it to one question: <i>how might we balance passenger distribution in single-deck buses to ease overcrowding at the front and under-use of space at the back during peak hours?</i></li>
+      <li><b>Ideate.</b> We explored different ways to nudge people toward the back, and settled on a smart card with a see-through display plus a fare incentive.</li>
+      <li><b>Prototype.</b> We went from a paper-and-cardboard mockup to a breadboard circuit to a refined, laser-cut working card (detailed below).</li>
+      <li><b>Test.</b> We surveyed 50 commuters to validate the problem and the concept, and used their answers to choose which incentives and features to prioritise.</li>
+    </ul>
+    <p>Two other modules that term, Modelling Space and Systems and Science for a Sustainable World, used the same idea as their project, so we could stress-test it with maths and a sustainability analysis as well (see further down).</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap prose">
+    <span class="eyebrow">The problem</span>
+    <h2>Everyone crowds the front of the bus</h2>
+    <p>On Singapore's single-deck buses, commuters tend to cluster around the front and the exit doors, even when there are free seats at the back. Squeezing down a packed aisle is uncomfortable, and from the front you often can't see whether there's space further in. So people stay put, the front gets more congested, and boarding and alighting slow down for everyone. The operator, SBS Transit, recognises this too.</p>
+    <p>Our team rode the buses and mapped how passengers actually moved: where they boarded, where they collided and where they bunched up when alighting. We then surveyed 50 commuters to check the problem was real and not just our impression.</p>
+
+    <div class="stats">
+      <div class="stat"><b>73%</b><span>said the front half is more congested at peak hours</span></div>
+      <div class="stat"><b>71%</b><span>find it hard to spot a free seat at the back</span></div>
+      <div class="stat"><b>90%</b><span>would use a card that shows available seats at the back</span></div>
+      <div class="stat"><b>89%</b><span>preferred a fare discount as the incentive to move back</span></div>
+    </div>
+
+    <span class="eyebrow">The idea</span>
+    <h2>A card that shows you where to go</h2>
+    <p>aLightCard replaces a normal stored-value card with one that has a small transparent display. Hold it up, and an arrow on the screen points you toward the back of the bus, overlaid on what you see through the glass. Because the display is see-through, it gives an augmented-reality effect without needing a camera. Beyond that, the card:</p>
+    <ul>
+      <li><b>Shows bus arrival times and crowd levels</b> for each service at your stop, so you can choose a less packed bus.</li>
+      <li><b>Pays your fare with a tap</b>, like a regular transit card.</li>
+      <li><b>Rewards good behaviour</b>, giving "good commuter" points and a fare discount when you follow the arrow and move to the back.</li>
+      <li><b>Lets commuters connect</b> through an opt-in feature that shows shared interests when two cards tap.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap prose">
+    <span class="eyebrow">My part</span>
+    <h2>Making the arrow work</h2>
+    <p>As Head of Technology, I was responsible for the software that runs on the card. The core challenge was the AR arrow. It had to keep pointing toward the back of the bus however the user held or turned the card, so I wrote C++ firmware for an ESP32 microcontroller that reads a gyroscope and redraws the arrow on the transparent display in real time.</p>
+    <p>Neither I nor the team had much Arduino or C++ experience going in. I started with simple static graphics on the display, then moved to dynamic drawing, and finally linked the arrow's orientation to the gyroscope. Getting it to feel responsive meant working through sensor drift and calibration issues so the arrow didn't jitter or slowly rotate away from the right direction.</p>
+
+    <div class="callout">
+      <p><b>What I learned:</b> a working demo is a long way from a reliable one. Most of my time went into calibration and edge cases, not the first version of the feature. That's the same lesson I later ran into with data pipelines.</p>
+    </div>
+
+    <span class="eyebrow">How it was built</span>
+    <h2>From cardboard to laser-cut acrylic</h2>
+    <p>The prototype went through three stages. A cardboard-and-acrylic mockup tested the concept with hand-drawn screens. A breadboard version wired up the ESP32, a transparent display from DFRobot and a gyroscope module to prove the electronics. The refined version moved the circuit onto compact copper boards, sandwiched a 2,500 mAh rechargeable battery between them, and housed everything in a case modelled in Fusion 360 and laser-cut from clear and frosted acrylic. The case has a sliding lock for the display glass and a removable side panel for charging.</p>
+  </div>
+  <div class="wrap">
+    <div class="gallery">
+      <figure><img src="../assets/img/alight-mockup.jpg" alt="Cardboard and acrylic mockup with hand-drawn screens" loading="lazy"><figcaption>1. Paper and acrylic mockup with hand-drawn screens</figcaption></figure>
+      <figure><img src="../assets/img/alight-rough.jpg" alt="Breadboard prototype with ESP32, display and gyroscope" loading="lazy"><figcaption>2. Breadboard prototype: ESP32, transparent display and gyroscope</figcaption></figure>
+      <figure><img src="../assets/img/alight-pcb.jpg" alt="Electronics soldered onto a compact copper board" loading="lazy"><figcaption>3. Electronics moved onto a compact copper board</figcaption></figure>
+      <figure><img class="contain" src="../assets/img/alight-cad.jpg" alt="Exploded CAD view of the acrylic case" loading="lazy"><figcaption>4. Case modelled in Fusion 360 for laser cutting</figcaption></figure>
+      <figure><img src="../assets/img/alight-ruler.jpg" alt="Assembled prototype next to a ruler" loading="lazy"><figcaption>5. Assembled card, kept close to wallet size</figcaption></figure>
+      <figure><img src="../assets/img/alight-tap.jpg" alt="aLightCard being tapped on a bus card reader" loading="lazy" style="object-position: center 30%"><figcaption>6. Tapping in on a real bus reader</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap prose">
+    <span class="eyebrow">Beyond the prototype</span>
+    <h2>Pricing the incentive and checking the footprint</h2>
+    <p>Alongside the DTI module, the same team carried aLightCard into two other modules that term, which pushed us to test the idea from angles a prototype can't cover.</p>
+
+    <h3>How big should the discount be? (Modelling Space and Systems)</h3>
+    <p>We modelled the fare discount as a function of how crowded the front of the bus is. Using the capacity of the bus model we studied (a Scania K230UB with 52 places in the front half), we set the crowding threshold at 35 passengers, which is where the front started to feel congested in our observations. Below that, no discount. Above it, the discount grows quadratically, so it becomes more attractive exactly when crowding is worst:</p>
+    <div class="formula">I = k × (P / C − T)²&nbsp;&nbsp;&nbsp;with&nbsp; T = 35 / 52 ≈ 0.673</div>
+    <p>where <i>P</i> is the number of passengers in the front, <i>C</i> is the front capacity and <i>k</i> scales with how busy the area is. Integrating the curve numerically in Excel gave an average discount for each area type:</p>
+    <table class="simple">
+      <thead><tr><th>Area type</th><th>k</th><th>Avg. discount</th><th>Fare (from $1.99)</th></tr></thead>
+      <tbody>
+        <tr><td>Sparse (highways, parks)</td><td>0.2</td><td>2.3%</td><td>$1.95</td></tr>
+        <tr><td>Residential (HDB estates)</td><td>0.5</td><td>5.7%</td><td>$1.88</td></tr>
+        <tr><td>Metropolitan (CBD, tourist areas)</td><td>0.8</td><td>9.1%</td><td>$1.81</td></tr>
+      </tbody>
+    </table>
+    <p>That works out to roughly a 6% average revenue reduction for the operator, which we argued was a feasible starting point. We were also honest about the limits: the <i>k</i> values would need real trials to calibrate, and the model assumes a single bus type and journeys that stay within one area type.</p>
+
+    <h3>Is it sustainable? (Science for a Sustainable World)</h3>
+    <p>We ran a life-cycle assessment on the card's three main components (the display glass, the electronics housing and the battery). We compared energy use, water consumption and CO₂ emissions across material, use and end-of-life stages, which led us to propose recycled ABS for the housing and to weigh the trade-offs of the battery chemistry and display glass.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Project posters</span>
+    <h2>The full story, in three posters</h2>
+    <p class="lead">Click any poster to open it at full size.</p>
+    <div class="posters">
+      <a href="../assets/img/dti-poster.jpg" target="_blank"><img src="../assets/img/dti-poster.jpg" alt="aLightCard Design Thinking and Innovation poster" loading="lazy">Design Thinking &amp; Innovation: research, prototyping and testing</a>
+      <a href="../assets/img/mss-poster.jpg" target="_blank"><img src="../assets/img/mss-poster.jpg" alt="Modelling Space and Systems poster" loading="lazy">Modelling Space &amp; Systems: fare incentive model</a>
+      <a href="../assets/img/ssw-poster.jpg" target="_blank"><img src="../assets/img/ssw-poster.jpg" alt="Science for a Sustainable World poster" loading="lazy">Science for a Sustainable World: life-cycle assessment</a>
+    </div>
+    <p style="margin-top:32px;color:var(--muted);font-size:.92rem">Team: Afrith Ahamed, Mohamed Haziq Yazeed, Zachary Edward Sindhunata, Neeraj Lakshmanan, Li Jiawen.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap next">
+    <a class="btn" href="../index.html#projects">← All projects</a>
+    <a class="btn primary" href="inventory-analytics.html">Next: Inventory sales analysis →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Afrith Ahamed</div>
+</footer>
+
+</body>
+</html>

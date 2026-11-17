@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Port Berth Scheduling Simulator | Afrith Ahamed</title>
+  <meta name="description" content="Case study (in progress): a SimPy discrete-event simulator that stress-tests port berth scheduling rules under disruption, built for Cargill Ocean Transportation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Afrith Ahamed</a>
+    <ul>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="case-hero">
+  <div class="wrap">
+    <a class="back" href="../index.html#projects">← All projects</a>
+    <span class="eyebrow">Case study · Industry project · In progress</span>
+    <h1>Port berth scheduling simulator</h1>
+    <p class="lead">A discrete-event simulation that stress-tests how different berth scheduling rules hold up when a dry-bulk port is hit by bad weather, congestion surges and berth outages.</p>
+    <div class="facts">
+      <div><span>Client</span>Cargill Ocean Transportation</div>
+      <div><span>Module</span>SUTD 40.318 Supply Chain Digitalisation &amp; Design</div>
+      <div><span>Timeline</span>Sep 2026 – present</div>
+      <div><span>Built with</span>Python, SimPy, Excel</div>
+    </div>
+  </div>
+</header>
+
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap prose">
+    <span class="eyebrow">The problem</span>
+    <h2>Scheduling rules that look fine on average can fail under stress</h2>
+    <p>Ports decide which waiting ship gets the next free berth using simple scheduling rules: first come, first served, or priority for urgent or larger vessels. These rules are usually judged under average conditions, with typical arrival rates, typical handling times and normal weather. But real ports get hit by storms that slow or stop the cranes, sudden bunching of arrivals and berths going out of service. A rule that performs well on an average day can behave very differently in those conditions, and historical data rarely contains enough bad days to show it.</p>
+    <p>The goal is a simulator that lets a port operator <b>stress-test scheduling rules across disruption scenarios</b> before committing to one. The value is in the testing method, not in claiming to find a single optimal rule.</p>
+
+    <span class="eyebrow">The setup</span>
+    <h2>One year of dry-bulk arrivals, four berths, four scenarios</h2>
+    <ul>
+      <li><b>432 dry-bulk vessel arrivals</b> over one year, carrying grain, oilseeds, sugar and fertiliser, from small Handysize ships up to Panamax/Kamsarmax.</li>
+      <li><b>Four berths</b> with different maximum ship sizes and handling speeds, so only some berths can take the largest ships.</li>
+      <li><b>78 service profiles</b> that set handling time by berth, ship size and cargo: setup hours plus cargo tonnes divided by the handling rate.</li>
+      <li><b>Hourly weather data</b> (Rotterdam reanalysis) that slows or stops cargo handling during high wind or heavy rain.</li>
+      <li><b>Four operating scenarios</b>: baseline, a 20% congestion surge, a 72-hour berth outage, and a combined shock.</li>
+      <li><b>Scheduling rules compared</b> on average waiting time, 95th-percentile (worst-case) waiting time and throughput.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap prose">
+    <span class="eyebrow">My part · Individual phase</span>
+    <h2>Building the baseline, twice</h2>
+    <p>Before teams formed, each of us worked on the problem alone for about three weeks. My job was to build a first-come-first-served baseline that ran cleanly on the full year of arrivals. Every later scheduling rule and disruption scenario gets measured against this baseline, so it had to be right.</p>
+    <p>I built it two ways:</p>
+    <ul>
+      <li><b>An Excel model using only formulas</b>, one row per ship. It tracks when each berth becomes free, checks which berths can fit the ship, picks the earliest available one and updates that berth's free time for the next row. All 432 assignments run without a single macro, and anyone can trace exactly why a ship went where it did.</li>
+      <li><b>A SimPy simulation in Python</b>, where each ship is a process and each berth is a resource. It applies the same eligibility rule, tie-break and service-time formula, so its output can be checked line by line against the spreadsheet.</li>
+    </ul>
+    <p>The two versions produce identical results. Getting there was useful in itself. Comparing them exposed a bug in my first Python version: when two berths were both free, it preferred the one that had been empty longest, instead of treating them as tied and following the stated tie-break rule. It changed which berth some ships were sent to, and would have silently skewed every comparison built on top.</p>
+
+    <div class="callout">
+      <p><b>Why build it twice?</b> No published waiting-time data exists for these berths to validate against. An independent second implementation was the most practical way to know the baseline was correct before anything else got built on it.</p>
+    </div>
+
+    <span class="eyebrow">Baseline results</span>
+    <h2>What first-come-first-served looks like under normal conditions</h2>
+    <div class="stats">
+      <div class="stat"><b>6.7 h</b><span>average wait for a berth</span></div>
+      <div class="stat"><b>55%</b><span>of ships berth immediately, with zero wait</span></div>
+      <div class="stat"><b>27.2 h</b><span>95th-percentile wait (the bad tail)</span></div>
+      <div class="stat"><b>35.8</b><span>ships handled per month</span></div>
+    </div>
+    <p>The average looks comfortable, but the tail tells a different story, and it isn't spread evenly. The largest ships can only use the two biggest berths, which are busy over 90% of the year, so they queue far longer than small ships, which can use any berth:</p>
+    <table class="simple">
+      <thead><tr><th>Ship size</th><th>Berths it can use</th><th>Avg. wait</th><th>95th-pct wait</th></tr></thead>
+      <tbody>
+        <tr><td>Handysize (smallest)</td><td>All 4</td><td>1.2 h</td><td>6.8 h</td></tr>
+        <tr><td>Handymax</td><td>All 4</td><td>7.1 h</td><td>21.2 h</td></tr>
+        <tr><td>Supramax / Ultramax</td><td>3</td><td>7.0 h</td><td>26.6 h</td></tr>
+        <tr><td>Panamax / Kamsarmax (largest)</td><td>2</td><td>11.6 h</td><td>43.2 h</td></tr>
+      </tbody>
+    </table>
+    <p>This is the core tension the project explores. The two large berths are close to saturated even on a normal day, so a storm or an outage there should hit the biggest ships hardest. A rule that prioritises by size or deadline could help or hurt, depending on the scenario.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap prose">
+    <span class="eyebrow">Team phase · Now</span>
+    <h2>What we're working on</h2>
+    <p>Our team is now extending the baseline into the full simulator:</p>
+    <ul>
+      <li>Adding the hourly weather disruptions that slow or stop cargo handling.</li>
+      <li>Running the four operating scenarios (baseline, congestion surge, berth outage, combined shock).</li>
+      <li>Implementing alternative scheduling rules (deadline-based and size-based priority) and comparing them against first-come-first-served on average wait, tail wait and throughput.</li>
+      <li>Checking our weather assumptions against published sources, for example the wind speeds at which bulk cranes actually slow down or stop, and whether rain halts the handling of grain and sugar entirely.</li>
+    </ul>
+    <p>This page will be updated with the scenario comparison once the project wraps up.</p>
+
+    <h3>A note on the data</h3>
+    <p style="color:var(--muted)">The vessel arrivals, berth set-up and service profiles are a coursework data pack supplied by Cargill. They are a manageable model of a dry-bulk terminal, not records of named Port of Rotterdam berths or real operations. The weather data is model-based reanalysis, and the disruption thresholds are classroom operating rules, not published port limits.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap next">
+    <a class="btn" href="inventory-analytics.html">← Previous: Inventory sales analysis</a>
+    <a class="btn primary" href="../index.html#projects">All projects →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Afrith Ahamed</div>
+</footer>
+
+</body>
+</html>
